@@ -4,15 +4,15 @@
 #
 Name     : R-magrittr
 Version  : 1.5
-Release  : 18
+Release  : 19
 URL      : http://cran.r-project.org/src/contrib/magrittr_1.5.tar.gz
 Source0  : http://cran.r-project.org/src/contrib/magrittr_1.5.tar.gz
 Summary  : A Forward-Pipe Operator for R
 Group    : Development/Tools
 License  : MIT
-Requires: R-crayon
-BuildRequires : R-crayon
+Requires: R-memoise
 BuildRequires : R-knitr
+BuildRequires : R-memoise
 BuildRequires : R-testthat
 BuildRequires : clr-R-helpers
 
@@ -40,6 +40,7 @@ mkdir -p %{buildroot}/usr/lib64/R/library
 R CMD INSTALL --install-tests --build  -l %{buildroot}/usr/lib64/R/library magrittr
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
+export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost
