@@ -4,13 +4,16 @@
 #
 Name     : R-magrittr
 Version  : 1.5
-Release  : 17
+Release  : 18
 URL      : http://cran.r-project.org/src/contrib/magrittr_1.5.tar.gz
 Source0  : http://cran.r-project.org/src/contrib/magrittr_1.5.tar.gz
 Summary  : A Forward-Pipe Operator for R
 Group    : Development/Tools
 License  : MIT
+Requires: R-crayon
+BuildRequires : R-crayon
 BuildRequires : R-knitr
+BuildRequires : R-testthat
 BuildRequires : clr-R-helpers
 
 %description
@@ -26,13 +29,20 @@ magrittr -  Ceci n'est pas un pipe.
 %install
 rm -rf %{buildroot}
 export LANG=C
+export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export LDFLAGS="$LDFLAGS  -Wl,-z -Wl,relro"
 mkdir -p %{buildroot}/usr/lib64/R/library
 R CMD INSTALL --install-tests --build  -l %{buildroot}/usr/lib64/R/library magrittr
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
-export no_proxy=intel.com,localhost
+export no_proxy=localhost
 export _R_CHECK_FORCE_SUGGESTS_=false
 R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library magrittr
 
