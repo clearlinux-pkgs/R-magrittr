@@ -4,15 +4,13 @@
 #
 Name     : R-magrittr
 Version  : 1.5
-Release  : 22
+Release  : 23
 URL      : http://cran.r-project.org/src/contrib/magrittr_1.5.tar.gz
 Source0  : http://cran.r-project.org/src/contrib/magrittr_1.5.tar.gz
 Summary  : A Forward-Pipe Operator for R
 Group    : Development/Tools
 License  : MIT
-Requires: R-memoise
 BuildRequires : R-knitr
-BuildRequires : R-memoise
 BuildRequires : R-testthat
 BuildRequires : clr-R-helpers
 
@@ -25,9 +23,12 @@ magrittr -  Ceci n'est pas un pipe.
 %setup -q -c -n magrittr
 
 %build
+export LANG=C
+export SOURCE_DATE_EPOCH=1484542401
 
 %install
 rm -rf %{buildroot}
+export SOURCE_DATE_EPOCH=1484542401
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -37,7 +38,7 @@ export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export LDFLAGS="$LDFLAGS  -Wl,-z -Wl,relro"
 mkdir -p %{buildroot}/usr/lib64/R/library
-R CMD INSTALL --install-tests --build  -l %{buildroot}/usr/lib64/R/library magrittr
+R CMD INSTALL --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} --build  -l %{buildroot}/usr/lib64/R/library magrittr
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
 export LANG=C
