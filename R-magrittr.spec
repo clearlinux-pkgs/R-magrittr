@@ -4,15 +4,13 @@
 #
 Name     : R-magrittr
 Version  : 1.5
-Release  : 27
+Release  : 28
 URL      : http://cran.r-project.org/src/contrib/magrittr_1.5.tar.gz
 Source0  : http://cran.r-project.org/src/contrib/magrittr_1.5.tar.gz
 Summary  : A Forward-Pipe Operator for R
 Group    : Development/Tools
 License  : MIT
-Requires: R-mime
 BuildRequires : R-knitr
-BuildRequires : R-mime
 BuildRequires : R-testthat
 BuildRequires : clr-R-helpers
 
@@ -29,11 +27,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1492800546
+export SOURCE_DATE_EPOCH=1492806017
 
 %install
 rm -rf %{buildroot}
-export SOURCE_DATE_EPOCH=1492800546
+export SOURCE_DATE_EPOCH=1492806017
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
