@@ -4,13 +4,15 @@
 #
 Name     : R-magrittr
 Version  : 1.5
-Release  : 26
+Release  : 27
 URL      : http://cran.r-project.org/src/contrib/magrittr_1.5.tar.gz
 Source0  : http://cran.r-project.org/src/contrib/magrittr_1.5.tar.gz
 Summary  : A Forward-Pipe Operator for R
 Group    : Development/Tools
 License  : MIT
+Requires: R-mime
 BuildRequires : R-knitr
+BuildRequires : R-mime
 BuildRequires : R-testthat
 BuildRequires : clr-R-helpers
 
@@ -23,12 +25,15 @@ magrittr -  Ceci n'est pas un pipe.
 %setup -q -c -n magrittr
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1484542401
+export SOURCE_DATE_EPOCH=1492800546
 
 %install
 rm -rf %{buildroot}
-export SOURCE_DATE_EPOCH=1484542401
+export SOURCE_DATE_EPOCH=1492800546
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -44,7 +49,7 @@ R CMD INSTALL --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} --build  -l
 export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
 R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library magrittr
 
@@ -55,6 +60,7 @@ R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/lib
 /usr/lib64/R/library/magrittr/INDEX
 /usr/lib64/R/library/magrittr/LICENSE
 /usr/lib64/R/library/magrittr/Meta/Rd.rds
+/usr/lib64/R/library/magrittr/Meta/features.rds
 /usr/lib64/R/library/magrittr/Meta/hsearch.rds
 /usr/lib64/R/library/magrittr/Meta/links.rds
 /usr/lib64/R/library/magrittr/Meta/nsInfo.rds
