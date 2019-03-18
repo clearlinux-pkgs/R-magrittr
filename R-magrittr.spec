@@ -4,23 +4,30 @@
 #
 Name     : R-magrittr
 Version  : 1.5
-Release  : 54
+Release  : 55
 URL      : http://cran.r-project.org/src/contrib/magrittr_1.5.tar.gz
 Source0  : http://cran.r-project.org/src/contrib/magrittr_1.5.tar.gz
 Summary  : A Forward-Pipe Operator for R
 Group    : Development/Tools
 License  : MIT
+Requires: R-assertthat
+Requires: R-cli
+Requires: R-markdown
+Requires: R-mime
+Requires: R-withr
+BuildRequires : R-assertthat
+BuildRequires : R-cli
 BuildRequires : R-knitr
+BuildRequires : R-markdown
+BuildRequires : R-mime
 BuildRequires : R-testthat
-BuildRequires : clr-R-helpers
+BuildRequires : R-withr
+BuildRequires : buildreq-R
 
 %description
-new forward-pipe operator, %>%. This operator will forward a
-    value, or the result of an expression, into the next function
-    call/expression. There is flexible support for the type
-    of right-hand side expressions. For more information, see
-    package vignette.
-    To quote Rene Magritte, "Ceci n'est pas un pipe."
+magrittr -  Ceci n'est pas un pipe.
+====================================
+[![Build Status](https://travis-ci.org/smbache/magrittr.png?branch=dev)](https://travis-ci.org/smbache/magrittr)
 
 %prep
 %setup -q -c -n magrittr
@@ -30,11 +37,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523314963
+export SOURCE_DATE_EPOCH=1552886709
 
 %install
+export SOURCE_DATE_EPOCH=1552886709
 rm -rf %{buildroot}
-export SOURCE_DATE_EPOCH=1523314963
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -69,8 +76,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library magrittr|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  magrittr || :
 
 
 %files
@@ -100,3 +106,11 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/magrittr/help/paths.rds
 /usr/lib64/R/library/magrittr/html/00Index.html
 /usr/lib64/R/library/magrittr/html/R.css
+/usr/lib64/R/library/magrittr/tests/test-all.R
+/usr/lib64/R/library/magrittr/tests/testthat/test-aliases.R
+/usr/lib64/R/library/magrittr/tests/testthat/test-anonymous-functions.r
+/usr/lib64/R/library/magrittr/tests/testthat/test-compound.R
+/usr/lib64/R/library/magrittr/tests/testthat/test-fseq.r
+/usr/lib64/R/library/magrittr/tests/testthat/test-multiple-arguments.r
+/usr/lib64/R/library/magrittr/tests/testthat/test-single-argument.r
+/usr/lib64/R/library/magrittr/tests/testthat/test-tee.r
