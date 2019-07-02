@@ -4,16 +4,16 @@
 #
 Name     : R-magrittr
 Version  : 1.5
-Release  : 59
+Release  : 60
 URL      : http://cran.r-project.org/src/contrib/magrittr_1.5.tar.gz
 Source0  : http://cran.r-project.org/src/contrib/magrittr_1.5.tar.gz
 Summary  : A Forward-Pipe Operator for R
 Group    : Development/Tools
 License  : MIT
-Requires: R-knitr
-Requires: R-testthat
-BuildRequires : R-knitr
-BuildRequires : R-testthat
+Requires: R-assertthat
+Requires: R-mime
+BuildRequires : R-assertthat
+BuildRequires : R-mime
 BuildRequires : buildreq-R
 
 %description
@@ -31,13 +31,13 @@ new forward-pipe operator, %>%. This operator will forward a
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1561774781
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1562090186
 
 %install
-export SOURCE_DATE_EPOCH=1561774781
+export SOURCE_DATE_EPOCH=1562090186
 rm -rf %{buildroot}
-export LANG=C
+export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -66,7 +66,7 @@ R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} 
 cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
