@@ -4,25 +4,21 @@
 #
 Name     : R-magrittr
 Version  : 1.5
-Release  : 62
-URL      : http://cran.r-project.org/src/contrib/magrittr_1.5.tar.gz
-Source0  : http://cran.r-project.org/src/contrib/magrittr_1.5.tar.gz
+Release  : 63
+URL      : https://cran.r-project.org/src/contrib/magrittr_1.5.tar.gz
+Source0  : https://cran.r-project.org/src/contrib/magrittr_1.5.tar.gz
 Summary  : A Forward-Pipe Operator for R
 Group    : Development/Tools
 License  : MIT
-Requires: R-assertthat
-Requires: R-mime
 BuildRequires : R-assertthat
 BuildRequires : R-mime
 BuildRequires : buildreq-R
+BuildRequires : util-linux
 
 %description
-new forward-pipe operator, %>%. This operator will forward a
-    value, or the result of an expression, into the next function
-    call/expression. There is flexible support for the type
-    of right-hand side expressions. For more information, see
-    package vignette.
-    To quote Rene Magritte, "Ceci n'est pas un pipe."
+magrittr -  Ceci n'est pas un pipe.
+====================================
+[![Build Status](https://travis-ci.org/smbache/magrittr.png?branch=dev)](https://travis-ci.org/smbache/magrittr)
 
 %prep
 %setup -q -c -n magrittr
@@ -32,10 +28,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1562090186
+export SOURCE_DATE_EPOCH=1571859319
 
 %install
-export SOURCE_DATE_EPOCH=1562090186
+export SOURCE_DATE_EPOCH=1571859319
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
