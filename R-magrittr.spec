@@ -4,39 +4,40 @@
 #
 Name     : R-magrittr
 Version  : 1.5
-Release  : 66
+Release  : 67
 URL      : https://cran.r-project.org/src/contrib/magrittr_1.5.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/magrittr_1.5.tar.gz
 Summary  : A Forward-Pipe Operator for R
 Group    : Development/Tools
 License  : MIT
-BuildRequires : R-assertthat
-BuildRequires : R-mime
 BuildRequires : buildreq-R
-BuildRequires : util-linux
 
 %description
-magrittr -  Ceci n'est pas un pipe.
-====================================
-[![Build Status](https://travis-ci.org/smbache/magrittr.png?branch=dev)](https://travis-ci.org/smbache/magrittr)
+new forward-pipe operator, %>%. This operator will forward a
+    value, or the result of an expression, into the next function
+    call/expression. There is flexible support for the type
+    of right-hand side expressions. For more information, see
+    package vignette.
+    To quote Rene Magritte, "Ceci n'est pas un pipe."
 
 %prep
 %setup -q -c -n magrittr
+cd %{_builddir}/magrittr
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1571859319
+export SOURCE_DATE_EPOCH=1589566060
 
 %install
-export SOURCE_DATE_EPOCH=1571859319
+export SOURCE_DATE_EPOCH=1589566060
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
