@@ -1,5 +1,5 @@
 PKG_NAME := R-magrittr
-URL = https://cran.r-project.org/src/contrib/magrittr_1.5.tar.gz
+URL = https://cran.r-project.org/src/contrib/magrittr_2.0.1.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common

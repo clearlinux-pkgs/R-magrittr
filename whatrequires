@@ -3,6 +3,7 @@ R-AmesHousing
 R-DT
 R-Luminescence
 R-VIM
+R-dbplyr
 R-dendextend
 R-dimRed
 R-dplyr
@@ -25,7 +26,6 @@ R-pbkrtest
 R-pdp
 R-phangorn
 R-pkgdown
-R-pkgmaker
 R-plotly
 R-promises
 R-purrr
