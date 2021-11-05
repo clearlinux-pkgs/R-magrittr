@@ -4,7 +4,7 @@
 #
 Name     : R-magrittr
 Version  : 2.0.1
-Release  : 77
+Release  : 78
 URL      : https://cran.r-project.org/src/contrib/magrittr_2.0.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/magrittr_2.0.1.tar.gz
 Summary  : A Forward-Pipe Operator for R
